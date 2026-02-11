@@ -1,0 +1,236 @@
+# Tamil Translations for Smart Farming Project
+# Copyright (C) 2025
+# This file is distributed under the same license as the Smart Farming package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Smart Farming 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-01 18:38+0530\n"
+"PO-Revision-Date: 2025-11-02 10:00+0530\n"
+"Last-Translator: Your Name <EMAIL@ADDRESS>\n"
+"Language-Team: Tamil\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\accounts\templates\accounts\dashboard.html:3
+#: .\accounts\templates\accounts\dashboard.html:16
+#: .\accounts\templates\accounts\home.html:16
+msgid "Dashboard"
+msgstr "டாஷ்போர்டு"
+
+#: .\accounts\templates\accounts\dashboard.html:9
+#: .\accounts\templates\accounts\home.html:9
+msgid "Smart Farming"
+msgstr "ஸ்மார்ட் விவசாயம்"
+
+#: .\accounts\templates\accounts\dashboard.html:15
+#: .\accounts\templates\accounts\home.html:3
+#: .\accounts\templates\accounts\home.html:15
+msgid "Home"
+msgstr "முகப்பு"
+
+#: .\accounts\templates\accounts\dashboard.html:17
+#: .\accounts\templates\accounts\home.html:17
+msgid "Profile"
+msgstr "சுயவிவரம்"
+
+#: .\accounts\templates\accounts\dashboard.html:18
+#: .\accounts\templates\accounts\home.html:18
+msgid "Logout"
+msgstr "வெளியேறு"
+
+#: .\accounts\templates\accounts\dashboard.html:23
+msgid "Language"
+msgstr "மொழி"
+
+#: .\accounts\templates\accounts\dashboard.html:38
+msgid "Smart Farming Dashboard"
+msgstr "ஸ்மார்ட் விவசாய டாஷ்போர்டு"
+
+#: .\accounts\templates\accounts\dashboard.html:39
+#, python-format
+msgid "Welcome, <strong>%(user.username)s</strong> 👋"
+msgstr "வரவேற்பு, <strong>%(user.username)s</strong> 👋"
+
+#: .\accounts\templates\accounts\dashboard.html:40
+msgid "Manage and monitor your farm efficiently with real-time insights."
+msgstr "உங்கள் பண்ணையை நேரடி தகவல்களுடன் திறம்பட நிர்வகித்து கண்காணிக்கவும்."
+
+#: .\accounts\templates\accounts\dashboard.html:47
+msgid "Crops"
+msgstr "பயிர்கள்"
+
+#: .\accounts\templates\accounts\dashboard.html:48
+msgid "Active"
+msgstr "செயலில்"
+
+#: .\accounts\templates\accounts\dashboard.html:53
+msgid "Moisture"
+msgstr "ஈரப்பதம்"
+
+#: .\accounts\templates\accounts\dashboard.html:54
+msgid "Avg"
+msgstr "சராசரி"
+
+#: .\accounts\templates\accounts\dashboard.html:59
+msgid "Motors"
+msgstr "மோட்டார்கள்"
+
+#: .\accounts\templates\accounts\dashboard.html:60
+msgid "Online"
+msgstr "ஆன்லைன்"
+
+#: .\accounts\templates\accounts\dashboard.html:65
+msgid "Cameras"
+msgstr "கேமராக்கள்"
+
+#: .\accounts\templates\accounts\dashboard.html:66
+msgid "Connected"
+msgstr "இணைக்கப்பட்டது"
+
+#: .\accounts\templates\accounts\dashboard.html:77
+msgid "Crop Disease Detection"
+msgstr "பயிர் நோய் கண்டறிதல்"
+
+#: .\accounts\templates\accounts\dashboard.html:78
+msgid "Analyze leaf images to detect plant diseases."
+msgstr "தாவர நோய்களை கண்டறிய இலைப் படங்களை பகுப்பாய்வு செய்யவும்."
+
+#: .\accounts\templates\accounts\dashboard.html:86
+msgid "Crop Recommendation"
+msgstr "பயிர் பரிந்துரை"
+
+#: .\accounts\templates\accounts\dashboard.html:87
+msgid "Get the best crop suggestions for your soil and weather."
+msgstr "உங்கள் மண் மற்றும் காலநிலைக்கான சிறந்த பயிர் பரிந்துரைகளைப் பெறுங்கள்."
+
+#: .\accounts\templates\accounts\dashboard.html:95
+msgid "Motor Control"
+msgstr "மோட்டார் கட்டுப்பாடு"
+
+#: .\accounts\templates\accounts\dashboard.html:96
+msgid "Manually or automatically control water flow."
+msgstr "கையால் அல்லது தானியக்கமாக நீரின் ஓட்டத்தை கட்டுப்படுத்தவும்."
+
+#: .\accounts\templates\accounts\dashboard.html:104
+msgid "Camera Monitoring"
+msgstr "கேமரா கண்காணிப்பு"
+
+#: .\accounts\templates\accounts\dashboard.html:105
+msgid "View and manage real-time camera images."
+msgstr "நேரடி கேமரா படங்களைப் பார்வையிட்டு நிர்வகிக்கவும்."
+
+#: .\accounts\templates\accounts\home.html:47
+msgid "Welcome"
+msgstr "வரவேற்பு"
+
+#: .\accounts\templates\accounts\home.html:48
+msgid "Here’s your real-time farm environment overview"
+msgstr "இது உங்கள் நேரடி பண்ணைச் சூழல் பார்வை"
+
+#: .\accounts\templates\accounts\home.html:56
+msgid "Temperature"
+msgstr "வெப்பநிலை"
+
+#: .\accounts\templates\accounts\home.html:66
+msgid "Humidity"
+msgstr "ஈரப்பதம்"
+
+#: .\accounts\templates\accounts\home.html:75
+msgid "Soil Moisture"
+msgstr "மண்ணின் ஈரப்பதம்"
+
+#: .\accounts\templates\accounts\home.html:84
+msgid "Air Quality"
+msgstr "காற்றின் தரம்"
+
+#: .\accounts\templates\accounts\home.html:93
+msgid "Data updates automatically every 5 seconds (connected to live sensors)."
+msgstr "தரவு ஒவ்வொரு 5 விநாடிகளிலும் தானாக புதுப்பிக்கப்படும் (நேரடி சென்சார்களுடன் இணைக்கப்பட்டுள்ளது)."
+
+#: .\accounts\templates\accounts\home.html:101
+msgid "Smart Farming Solution Overview"
+msgstr "ஸ்மார்ட் விவசாய தீர்வின் சுருக்கம்"
+
+#: .\accounts\templates\accounts\home.html:106
+msgid "About the Project"
+msgstr "திட்டத்தைப் பற்றி"
+
+#: .\accounts\templates\accounts\home.html:108
+msgid ""
+"Our Smart Farming system integrates IoT and AI to monitor soil moisture, "
+"temperature, humidity, and air quality in real time. The system automates "
+"irrigation control and crop recommendation to ensure optimal growth and "
+"efficient water usage."
+msgstr ""
+"எங்கள் ஸ்மார்ட் விவசாய அமைப்பு, மண்ணின் ஈரப்பதம், வெப்பநிலை, ஈரப்பதம் மற்றும் காற்றின் தரத்தை நேரடியாக கண்காணிக்க IoT மற்றும் AI ஐ ஒருங்கிணைக்கிறது. "
+"இந்த அமைப்பு நீர்ப்பாசன கட்டுப்பாடு மற்றும் பயிர் பரிந்துரைகளை தானியக்கமாக செய்து சிறந்த வளர்ச்சியும் நீர் பயனுமையும் உறுதி செய்கிறது."
+
+#: .\accounts\templates\accounts\home.html:113
+msgid "Architecture Overview"
+msgstr "மைப்புக் கண்ணோட்டம்"
+
+#: .\accounts\templates\accounts\home.html:115
+msgid ""
+"Data is collected from sensors connected to NodeMCU and transmitted to the "
+"Django Cloud Server via APIs. The Django app processes and displays this "
+"data in real time, while AI models recommend the best crop based on "
+"environmental parameters."
+msgstr ""
+"NodeMCU-க்கு இணைக்கப்பட்ட சென்சார்களிலிருந்து தரவு சேகரிக்கப்பட்டு API களின் மூலம் Django கிளவுட் சர்வருக்கு அனுப்பப்படுகிறது. "
+"Django பயன்பாடு இந்த தரவை நேரடியாக செயலாக்கி காட்சிப்படுத்துகிறது, அதே சமயம் AI மாதிரிகள் சுற்றுச்சூழல் அளவுருக்களின் அடிப்படையில் சிறந்த பயிரை பரிந்துரைக்கின்றன."
+
+#: .\accounts\templates\accounts\home.html:120
+msgid "Key Features"
+msgstr "முக்கிய அம்சங்கள்"
+
+#: .\accounts\templates\accounts\home.html:122
+msgid "Real-time monitoring of temperature, humidity, and soil moisture"
+msgstr "வெப்பநிலை, ஈரப்பதம் மற்றும் மண்ணின் ஈரப்பதத்தை நேரடியாக கண்காணித்தல்"
+
+#: .\accounts\templates\accounts\home.html:123
+msgid "AI-based crop recommendation"
+msgstr "AI அடிப்படையிலான பயிர் பரிந்துரை"
+
+#: .\accounts\templates\accounts\home.html:124
+msgid "Automated irrigation based on soil condition"
+msgstr "மண்ணின் நிலைக்கு ஏற்ப தானியக்க நீர்ப்பாசனம்"
+
+#: .\accounts\templates\accounts\home.html:125
+msgid "Data visualization and analytics dashboard"
+msgstr "தரவு காட்சிப்படுத்தல் மற்றும் பகுப்பாய்வு டாஷ்போர்டு"
+
+#: .\accounts\templates\accounts\home.html:126
+msgid "Cloud-based data storage and control"
+msgstr "கிளவுட் அடிப்படையிலான தரவு சேமிப்பு மற்றும் கட்டுப்பாடு"
+
+#: .\accounts\templates\accounts\home.html:131
+msgid "AI & Prediction System"
+msgstr "AI மற்றும் கணிப்புக் கணினி அமைப்பு"
+
+#: .\accounts\templates\accounts\home.html:133
+msgid ""
+"Our integrated AI engine analyzes soil and weather parameters to predict the "
+"best crop for current conditions. It also provides nutrient balance and "
+"irrigation guidance, helping farmers make data-driven decisions."
+msgstr ""
+"எங்கள் ஒருங்கிணைந்த AI இயந்திரம் மண் மற்றும் வானிலை அளவுருக்களை பகுப்பாய்வு செய்து தற்போதைய நிலைகளுக்கான சிறந்த பயிரை கணிக்கிறது. "
+"இது சத்துச் சமநிலை மற்றும் நீர்ப்பாசன வழிகாட்டுதலையும் வழங்குகிறது, இது விவசாயிகள் தரவு சார்ந்த முடிவுகளை எடுக்க உதவுகிறது."
+
+#: .\accounts\templates\accounts\home.html:138
+msgid "Future Scope"
+msgstr "எதிர்கால நோக்கம்"
+
+#: .\accounts\templates\accounts\home.html:140
+msgid ""
+"We plan to integrate image-based crop disease detection using CNN models and "
+"deploy mobile notifications for irrigation alerts, aiming to deliver a "
+"complete precision agriculture platform."
+msgstr ""
+"நாங்கள் CNN மாதிரிகளைப் பயன்படுத்தி பட அடிப்படையிலான பயிர் நோய் கண்டறிதலை ஒருங்கிணைத்து, நீர்ப்பாசன எச்சரிக்கைகளுக்கான மொபைல் அறிவிப்புகளைப் பிரயோகிக்கத் திட்டமிட்டுள்ளோம், "
+"இது முழுமையான துல்லியமான விவசாய தளத்தை வழங்கும் நோக்கத்தைக் கொண்டது."

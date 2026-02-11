@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Camera Dashboard{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+
+  <!-- Welcome card -->
+  <div class="card p-4 shadow-sm mb-4 text-center">
+    <h1 class="fw-bold">👋 Welcome to Your Camera Dashboard</h1>
+    <p class="text-muted mb-0">
+      Monitor your real-time images here. The most recent 6 images will always be available below.
+    </p>
+  </div>
+
+  <!-- Edit Camera IP card -->
+  <div class="card p-4 shadow-sm mb-4">
+    <h4 class="fw-semibold mb-3">⚙️ Edit Camera IP</h4>
+    <form id="ipForm">
+      <input type="text" id="cameraIp" class="form-control mb-2"
+        placeholder="Enter camera IP (e.g., http://10.208.3.153:8080)"
+        value="{{ camera_ip|default:'http://10.249.11.206:8080' }}">
+      <button type="submit" class="btn btn-primary">Save IP</button>
+    </form>
+    <p id="ipMessage" class="mt-2 small"></p>
+  </div>
+
+  <!-- Real-time images card -->
+  <div class="card p-4 shadow-sm">
+    <h4 class="fw-semibold mb-3">📷 Check Real-time Images</h4>
+    {% if photos %}
+      <div class="row">
+        {% for photo in photos %}
+          <div class="col-md-4 mb-3">
+            <div class="border rounded p-2 shadow-sm bg-light text-center">
+              <a href="{{ photo.image_url }}" target="_blank" rel="noopener noreferrer">
+                <img src="{{ photo.image_url }}" alt="photo-{{ forloop.counter }}"
+                     class="img-fluid rounded mb-2" style="height:180px; object-fit:cover;">
+              </a>
+              <div class="text-muted small mb-2">
+                Uploaded: {{ photo.uploaded_at }}
+              </div>
+              <div class="d-flex justify-content-center gap-2">
+                <button class="btn btn-sm btn-outline-primary"
+                        onclick="copyToClipboard('{{ photo.image_url }}')">
+                  Copy URL
+                </button>
+                <a href="{{ photo.image_url }}" download class="btn btn-sm btn-outline-success">
+                  Download
+                </a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-muted">No photos yet — upload or connect your camera to see them here.</p>
+    {% endif %}
+  </div>
+
+</div>
+
+<!-- JavaScript -->
+<script>
+  // Copy URL to clipboard
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert("Copied to clipboard: " + text);
+    }).catch(err => {
+      alert("Failed to copy: " + err);
+    });
+  }
+
+  // Save camera IP dynamically
+  const ipForm = document.getElementById('ipForm');
+  const ipMessage = document.getElementById('ipMessage');
+
+  ipForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const ip = document.getElementById('cameraIp').value.trim();
+    if (!ip) {
+      ipMessage.textContent = "Please enter an IP!";
+      ipMessage.style.color = "red";
+      return;
+    }
+
+    try {
+      const response = await fetch("{% url 'edit_ip' %}", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": "{{ csrf_token }}"
+        },
+        body: JSON.stringify({ ip_address: ip })
+      });
+      const data = await response.json();
+      if (data.status === "success") {
+        ipMessage.textContent = "Camera IP updated successfully!";
+        ipMessage.style.color = "green";
+      } else {
+        ipMessage.textContent = "Failed to update IP: " + (data.error || "");
+        ipMessage.style.color = "red";
+      }
+    } catch (err) {
+      ipMessage.textContent = "Error: " + err;
+      ipMessage.style.color = "red";
+    }
+  });
+</script>
+{% endblock %}

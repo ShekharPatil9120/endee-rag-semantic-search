@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register | Smart Farming</title>
+  <!-- ✅ Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(to right, #e8f5e9, #ffffff);
+      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      width: 28rem;
+      border: 0;
+      border-radius: 1.2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding: 2.5rem;
+    }
+
+    .card input, .card select {
+      border-radius: 10px !important;
+      border: 1px solid #c8e6c9 !important;
+      padding: 10px;
+    }
+
+    .btn-success {
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-success:hover {
+      background-color: #2e7d32;
+      transform: translateY(-2px);
+    }
+
+    .text-danger {
+      font-size: 0.85rem;
+    }
+
+    h3 {
+      letter-spacing: 0.5px;
+    }
+
+    input:focus {
+      box-shadow: 0 0 5px #a5d6a7;
+      border-color: #66bb6a;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="d-flex justify-content-center align-items-center vh-100" style="background: linear-gradient(to right, #f8fff8, #ffffff);">
+    <div class="card">
+      <div class="text-center mb-4">
+        <h3 class="fw-bold text-success">🌾 Create Your Account</h3>
+        <p class="text-muted small">Join Smart Farming and manage your farm intelligently!</p>
+      </div>
+
+      <form method="POST" novalidate>
+        {% csrf_token %}
+        {% for field in form %}
+          <div class="mb-3 text-start">
+            <label class="form-label fw-semibold">{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+              <small class="text-danger">{{ field.errors.0 }}</small>
+            {% endif %}
+          </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-success w-100 mt-3 py-2 fw-semibold shadow-sm">
+          🚀 Register
+        </button>
+      </form>
+
+      <div class="text-center mt-4">
+        <p class="mb-0 text-muted">
+          Already have an account?
+          <a href="{% url 'login' %}" class="text-success fw-semibold text-decoration-none">Login</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

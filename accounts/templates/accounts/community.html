@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Community" %}{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+  <!-- 🌾 Add Post Form -->
+  <div class="card mb-4 shadow-sm border-0 rounded-4">
+    <div class="card-header bg-success text-white">
+      <h5 class="mb-0">📝 {% trans "Share a new post" %}</h5>
+    </div>
+    <div class="card-body">
+      <form method="POST" action="{% url 'add_post' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+          <input type="text" name="title" class="form-control" placeholder="{% trans 'Enter post title' %}" required>
+        </div>
+        <div class="mb-3">
+          <textarea name="content" rows="3" class="form-control" placeholder="{% trans 'Write something interesting...' %}" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">{% trans "Post" %}</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 🗨️ Community Posts -->
+  {% for post in posts %}
+  <div class="card shadow-sm border-0 rounded-4 mb-4">
+    <div class="card-header bg-light d-flex justify-content-between align-items-center">
+      <strong>{{ post.author.username }}</strong>
+      <small class="text-muted">{{ post.created_at|date:"M d, H:i" }}</small>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title text-success">{{ post.title }}</h5>
+      <p class="card-text">{{ post.content }}</p>
+
+      {% if post.author == user %}
+        <a href="{% url 'delete_post' post.id %}" class="btn btn-outline-danger btn-sm">🗑 {% trans "Delete Post" %}</a>
+      {% endif %}
+    </div>
+
+    <!-- 💬 Comments -->
+    <div class="card-footer bg-white">
+      <h6 class="text-muted">{% trans "Comments" %}</h6>
+      {% for comment in post.comments.all %}
+        <div class="border p-2 mb-2 rounded">
+          <strong>{{ comment.author.username }}</strong>: {{ comment.text }}
+          <div class="text-end">
+            <small class="text-muted">{{ comment.created_at|date:"H:i" }}</small>
+            {% if comment.author == user %}
+              <a href="{% url 'delete_comment' comment.id %}" class="text-danger small ms-2">🗑</a>
+            {% endif %}
+          </div>
+        </div>
+      {% empty %}
+        <p class="text-muted small">{% trans "No comments yet." %}</p>
+      {% endfor %}
+
+      <!-- ➕ Add Comment Form -->
+      <form method="POST" action="{% url 'add_comment' post.id %}" class="mt-3">
+        {% csrf_token %}
+        <div class="input-group">
+          <input type="text" name="text" class="form-control" placeholder="{% trans 'Add a comment...' %}" required>
+          <button class="btn btn-success" type="submit">{% trans "Send" %}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  {% empty %}
+    <div class="text-center text-muted">
+      <p>{% trans "No posts yet. Be the first to share!" %}</p>
+    </div>
+  {% endfor %}
+</div>
+
+<style>
+  body {
+    background: #f5f5f5;
+  }
+  .card {
+    border-radius: 15px;
+  }
+  .card-header {
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+  }
+</style>
+{% endblock %}

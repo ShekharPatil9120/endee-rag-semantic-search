@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}Prediction Result | Smart Farming{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+  <div class="card shadow-lg text-center border-0" style="max-width: 650px; width: 100%; border-radius: 20px; background: rgba(255,255,255,0.8); backdrop-filter: blur(10px);">
+    
+    <div class="card-header text-white" style="background-image: linear-gradient(315deg, #c8d6e5 0%, #8ae9b3 74%); border-radius: 20px 20px 0 0;">
+      <h3 class="fw-bold mb-0">🌿 Prediction Result</h3>
+    </div>
+
+    <div class="card-body">
+      <img src="{{ image_url }}" alt="Uploaded Image" class="img-fluid rounded shadow mb-3" style="max-width: 300px;">
+      <p><strong>Disease:</strong> {{ class_name }}</p>
+      <p class="text-muted"><strong>Accuracy:</strong> {{ confidence|floatformat:2 }}%</p>
+
+      <div class="d-flex justify-content-center gap-3 mt-3">
+        <button id="solutionBtn" class="btn btn-success fw-semibold px-4 shadow-sm" onclick="toggleSolution()">Show Solution</button>
+        <a href="{% url 'upload_image' %}" class="btn btn-outline-success fw-semibold px-4 shadow-sm">Upload Another Image</a>
+      </div>
+
+      <div id="solutionBox" class="mt-4 p-4 text-start rounded shadow-sm" style="display: none; background: rgba(255,255,255,0.85); border-left: 5px solid #4CAF50;">
+        <h4 class="fw-bold text-success mb-3">🌱 Recommended Solutions</h4>
+        <p><strong>Organic / Temporary Solution:</strong><br> {{ temp_solution }}</p>
+        <p><strong>Chemical / Permanent Solution:</strong><br> {{ perm_solution }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+function toggleSolution() {
+  const box = document.getElementById("solutionBox");
+  const btn = document.getElementById("solutionBtn");
+  box.style.display = (box.style.display === "block") ? "none" : "block";
+  btn.textContent = (btn.textContent === "Show Solution") ? "Hide Solution" : "Show Solution";
+}
+</script>
+{% endblock %}

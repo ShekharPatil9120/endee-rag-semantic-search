@@ -1,0 +1,236 @@
+# Kannada Translations for Smart Farming Project
+# Copyright (C) 2025
+# This file is distributed under the same license as the Smart Farming package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Smart Farming 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-01 18:38+0530\n"
+"PO-Revision-Date: 2025-11-01 19:00+0530\n"
+"Last-Translator: Your Name <EMAIL@ADDRESS>\n"
+"Language-Team: Kannada\n"
+"Language: kn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\accounts\templates\accounts\dashboard.html:3
+#: .\accounts\templates\accounts\dashboard.html:16
+#: .\accounts\templates\accounts\home.html:16
+msgid "Dashboard"
+msgstr "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್"
+
+#: .\accounts\templates\accounts\dashboard.html:9
+#: .\accounts\templates\accounts\home.html:9
+msgid "Smart Farming"
+msgstr "ಸ್ಮಾರ್ಟ್ ಫಾರ್ಮಿಂಗ್"
+
+#: .\accounts\templates\accounts\dashboard.html:15
+#: .\accounts\templates\accounts\home.html:3
+#: .\accounts\templates\accounts\home.html:15
+msgid "Home"
+msgstr "ಮುಖಪುಟ"
+
+#: .\accounts\templates\accounts\dashboard.html:17
+#: .\accounts\templates\accounts\home.html:17
+msgid "Profile"
+msgstr "ಪ್ರೊಫೈಲ್"
+
+#: .\accounts\templates\accounts\dashboard.html:18
+#: .\accounts\templates\accounts\home.html:18
+msgid "Logout"
+msgstr "ಲಾಗ್ ಔಟ್"
+
+#: .\accounts\templates\accounts\dashboard.html:23
+msgid "Language"
+msgstr "ಭಾಷೆ"
+
+#: .\accounts\templates\accounts\dashboard.html:38
+msgid "Smart Farming Dashboard"
+msgstr "ಸ್ಮಾರ್ಟ್ ಫಾರ್ಮಿಂಗ್ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್"
+
+#: .\accounts\templates\accounts\dashboard.html:39
+#, python-format
+msgid "Welcome, <strong>%(user.username)s</strong> 👋"
+msgstr "ಸ್ವಾಗತ, <strong>%(user.username)s</strong> 👋"
+
+#: .\accounts\templates\accounts\dashboard.html:40
+msgid "Manage and monitor your farm efficiently with real-time insights."
+msgstr "ರಿಯಲ್-ಟೈಮ್ ಮಾಹಿತಿಯೊಂದಿಗೆ ನಿಮ್ಮ ಫಾರ್ಮ್‌ನನ್ನು ಪರಿಣಾಮಕಾರಿಯಾಗಿ ನಿರ್ವಹಿಸಿ ಮತ್ತು ಮೇಲ್ವಿಚಾರಣೆ ಮಾಡಿ."
+
+#: .\accounts\templates\accounts\dashboard.html:47
+msgid "Crops"
+msgstr "ಬೆಳೆಗಳು"
+
+#: .\accounts\templates\accounts\dashboard.html:48
+msgid "Active"
+msgstr "ಸಕ್ರಿಯ"
+
+#: .\accounts\templates\accounts\dashboard.html:53
+msgid "Moisture"
+msgstr "ತೇವಾಂಶ"
+
+#: .\accounts\templates\accounts\dashboard.html:54
+msgid "Avg"
+msgstr "ಸರಾಸರಿ"
+
+#: .\accounts\templates\accounts\dashboard.html:59
+msgid "Motors"
+msgstr "ಮೋಟಾರ್‌ಗಳು"
+
+#: .\accounts\templates\accounts\dashboard.html:60
+msgid "Online"
+msgstr "ಆನ್‌ಲೈನ್"
+
+#: .\accounts\templates\accounts\dashboard.html:65
+msgid "Cameras"
+msgstr "ಕ್ಯಾಮೆರಾಗಳು"
+
+#: .\accounts\templates\accounts\dashboard.html:66
+msgid "Connected"
+msgstr "ಕನೆಕ್ಟ್ ಆಗಿದೆ"
+
+#: .\accounts\templates\accounts\dashboard.html:77
+msgid "Crop Disease Detection"
+msgstr "ಬೆಳೆ ರೋಗ ಪತ್ತೆ"
+
+#: .\accounts\templates\accounts\dashboard.html:78
+msgid "Analyze leaf images to detect plant diseases."
+msgstr "ಸಸ್ಯರೋಗಗಳನ್ನು ಪತ್ತೆಹಚ್ಚಲು ಎಲೆಗಳ ಚಿತ್ರಗಳನ್ನು ವಿಶ್ಲೇಷಿಸಿ."
+
+#: .\accounts\templates\accounts\dashboard.html:86
+msgid "Crop Recommendation"
+msgstr "ಬೆಳೆ ಶಿಫಾರಸು"
+
+#: .\accounts\templates\accounts\dashboard.html:87
+msgid "Get the best crop suggestions for your soil and weather."
+msgstr "ನಿಮ್ಮ ಮಣ್ಣು ಮತ್ತು ಹವಾಮಾನಕ್ಕೆ ಉತ್ತಮ ಬೆಳೆ ಶಿಫಾರಸುಗಳನ್ನು ಪಡೆಯಿರಿ."
+
+#: .\accounts\templates\accounts\dashboard.html:95
+msgid "Motor Control"
+msgstr "ಮೋಟಾರ್ ನಿಯಂತ್ರಣ"
+
+#: .\accounts\templates\accounts\dashboard.html:96
+msgid "Manually or automatically control water flow."
+msgstr "ನೀರಿನ ಹರಿವನ್ನು ಕೈಯಿಂದ ಅಥವಾ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ನಿಯಂತ್ರಿಸಿ."
+
+#: .\accounts\templates\accounts\dashboard.html:104
+msgid "Camera Monitoring"
+msgstr "ಕ್ಯಾಮೆರಾ ಮೇಲ್ವಿಚಾರಣೆ"
+
+#: .\accounts\templates\accounts\dashboard.html:105
+msgid "View and manage real-time camera images."
+msgstr "ರಿಯಲ್-ಟೈಮ್ ಕ್ಯಾಮೆರಾ ಚಿತ್ರಗಳನ್ನು ವೀಕ್ಷಿಸಿ ಮತ್ತು ನಿರ್ವಹಿಸಿ."
+
+#: .\accounts\templates\accounts\home.html:47
+msgid "Welcome"
+msgstr "ಸ್ವಾಗತ"
+
+#: .\accounts\templates\accounts\home.html:48
+msgid "Here’s your real-time farm environment overview"
+msgstr "ಇದಾಗಿದೆ ನಿಮ್ಮ ರಿಯಲ್-ಟೈಮ್ ಫಾರ್ಮ್ ಪರಿಸರ ಅವಲೋಕನ"
+
+#: .\accounts\templates\accounts\home.html:56
+msgid "Temperature"
+msgstr "ತಾಪಮಾನ"
+
+#: .\accounts\templates\accounts\home.html:66
+msgid "Humidity"
+msgstr "ಆರ್ದ್ರತೆ"
+
+#: .\accounts\templates\accounts\home.html:75
+msgid "Soil Moisture"
+msgstr "ಮಣ್ಣಿನ ತೇವಾಂಶ"
+
+#: .\accounts\templates\accounts\home.html:84
+msgid "Air Quality"
+msgstr "ಗಾಳಿಯ ಗುಣಮಟ್ಟ"
+
+#: .\accounts\templates\accounts\home.html:93
+msgid "Data updates automatically every 5 seconds (connected to live sensors)."
+msgstr "ಮಾಹಿತಿ ಪ್ರತಿ 5 ಸೆಕೆಂಡುಗಳಿಗೆ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ನವೀಕರಿಸಲಾಗುತ್ತದೆ (ಲೈವ್ ಸೆನ್ಸರ್‌ಗಳಿಗೆ ಸಂಪರ್ಕಗೊಂಡಿದೆ)."
+
+#: .\accounts\templates\accounts\home.html:101
+msgid "Smart Farming Solution Overview"
+msgstr "ಸ್ಮಾರ್ಟ್ ಫಾರ್ಮಿಂಗ್ ಪರಿಹಾರದ ಅವಲೋಕನ"
+
+#: .\accounts\templates\accounts\home.html:106
+msgid "About the Project"
+msgstr "ಯೋಜನೆಯ ಬಗ್ಗೆ"
+
+#: .\accounts\templates\accounts\home.html:108
+msgid ""
+"Our Smart Farming system integrates IoT and AI to monitor soil moisture, "
+"temperature, humidity, and air quality in real time. The system automates "
+"irrigation control and crop recommendation to ensure optimal growth and "
+"efficient water usage."
+msgstr ""
+"ನಮ್ಮ ಸ್ಮಾರ್ಟ್ ಫಾರ್ಮಿಂಗ್ ಸಿಸ್ಟಮ್ IoT ಮತ್ತು AI ಅನ್ನು ನೈಜ-ಕಾಲದಲ್ಲಿ ಮಣ್ಣಿನ ತೇವಾಂಶ, ತಾಪಮಾನ, ಆರ್ದ್ರತೆ ಮತ್ತು ಗಾಳಿಯ ಗುಣಮಟ್ಟವನ್ನು ಮೇಲ್ವಿಚಾರಣೆ ಮಾಡಲು ಸಂಯೋಜಿಸುತ್ತದೆ. "
+"ಈ ವ್ಯವಸ್ಥೆ ನೀರಾವರಿ ನಿಯಂತ್ರಣ ಮತ್ತು ಬೆಳೆ ಶಿಫಾರಸುಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತಗೊಳಿಸುತ್ತದೆ, ಇದು ಉತ್ತಮ ಬೆಳವಣಿಗೆ ಮತ್ತು ಪರಿಣಾಮಕಾರಿ ನೀರಿನ ಬಳಕೆಯನ್ನು ಖಚಿತಪಡಿಸುತ್ತದೆ."
+
+#: .\accounts\templates\accounts\home.html:113
+msgid "Architecture Overview"
+msgstr "ವ್ಯಾಸವಿನ್ಯಾಸ ಅವಲೋಕನ"
+
+#: .\accounts\templates\accounts\home.html:115
+msgid ""
+"Data is collected from sensors connected to NodeMCU and transmitted to the "
+"Django Cloud Server via APIs. The Django app processes and displays this "
+"data in real time, while AI models recommend the best crop based on "
+"environmental parameters."
+msgstr ""
+"NodeMCU ಗೆ ಸಂಪರ್ಕಗೊಂಡಿರುವ ಸೆನ್ಸರ್‌ಗಳಿಂದ ಡೇಟಾವನ್ನು ಸಂಗ್ರಹಿಸಿ API ಗಳ ಮೂಲಕ Django ಕ್ಲೌಡ್ ಸರ್ವರ್‌ಗೆ ಪ್ರಸಾರ ಮಾಡಲಾಗುತ್ತದೆ. "
+"Django ಅಪ್ಲಿಕೇಶನ್ ಈ ಡೇಟಾವನ್ನು ನೈಜ-ಕಾಲದಲ್ಲಿ ಪ್ರಕ್ರಿಯೆಗೊಳಿಸಿ ಪ್ರದರ್ಶಿಸುತ್ತದೆ, ಅಲ್ಲಿ AI ಮಾದರಿಗಳು ಪರಿಸರ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳ ಆಧಾರದ ಮೇಲೆ ಅತ್ಯುತ್ತಮ ಬೆಳೆ ಶಿಫಾರಸು ಮಾಡುತ್ತವೆ."
+
+#: .\accounts\templates\accounts\home.html:120
+msgid "Key Features"
+msgstr "ಮುಖ್ಯ ವೈಶಿಷ್ಟ್ಯಗಳು"
+
+#: .\accounts\templates\accounts\home.html:122
+msgid "Real-time monitoring of temperature, humidity, and soil moisture"
+msgstr "ತಾಪಮಾನ, ಆರ್ದ್ರತೆ ಮತ್ತು ಮಣ್ಣಿನ ತೇವಾಂಶದ ನೈಜ-ಕಾಲದ ಮೇಲ್ವಿಚಾರಣೆ"
+
+#: .\accounts\templates\accounts\home.html:123
+msgid "AI-based crop recommendation"
+msgstr "AI ಆಧಾರಿತ ಬೆಳೆ ಶಿಫಾರಸು"
+
+#: .\accounts\templates\accounts\home.html:124
+msgid "Automated irrigation based on soil condition"
+msgstr "ಮಣ್ಣಿನ ಸ್ಥಿತಿಯ ಆಧಾರದ ಮೇಲೆ ಸ್ವಯಂಚಾಲಿತ ನೀರಾವರಿ"
+
+#: .\accounts\templates\accounts\home.html:125
+msgid "Data visualization and analytics dashboard"
+msgstr "ಡೇಟಾ ದೃಶ್ಯೀಕರಣ ಮತ್ತು ವಿಶ್ಲೇಷಣಾ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್"
+
+#: .\accounts\templates\accounts\home.html:126
+msgid "Cloud-based data storage and control"
+msgstr "ಕ್ಲೌಡ್ ಆಧಾರಿತ ಡೇಟಾ ಸಂಗ್ರಹಣೆ ಮತ್ತು ನಿಯಂತ್ರಣ"
+
+#: .\accounts\templates\accounts\home.html:131
+msgid "AI & Prediction System"
+msgstr "AI ಮತ್ತು ಭವಿಷ್ಯವಾಣಿ ವ್ಯವಸ್ಥೆ"
+
+#: .\accounts\templates\accounts\home.html:133
+msgid ""
+"Our integrated AI engine analyzes soil and weather parameters to predict the "
+"best crop for current conditions. It also provides nutrient balance and "
+"irrigation guidance, helping farmers make data-driven decisions."
+msgstr ""
+"ನಮ್ಮ ಏಕೀಕೃತ AI ಎಂಜಿನ್ ಪ್ರಸ್ತುತ ಪರಿಸ್ಥಿತಿಗಳಿಗೆ ಅತ್ಯುತ್ತಮ ಬೆಳೆಗಳನ್ನು ಊಹಿಸಲು ಮಣ್ಣು ಮತ್ತು ಹವಾಮಾನ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳನ್ನು ವಿಶ್ಲೇಷಿಸುತ್ತದೆ. "
+"ಇದು ಪೋಷಕಾಂಶ ಸಮತೋಲನ ಮತ್ತು ನೀರಾವರಿ ಮಾರ್ಗದರ್ಶನವನ್ನು ಒದಗಿಸುತ್ತದೆ, ರೈತರಿಗೆ ಡೇಟಾ ಆಧಾರಿತ ನಿರ್ಧಾರಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ."
+
+#: .\accounts\templates\accounts\home.html:138
+msgid "Future Scope"
+msgstr "ಭವಿಷ್ಯದ ವ್ಯಾಪ್ತಿ"
+
+#: .\accounts\templates\accounts\home.html:140
+msgid ""
+"We plan to integrate image-based crop disease detection using CNN models and "
+"deploy mobile notifications for irrigation alerts, aiming to deliver a "
+"complete precision agriculture platform."
+msgstr ""
+"ನಾವು CNN ಮಾದರಿಗಳನ್ನು ಬಳಸಿಕೊಂಡು ಚಿತ್ರ ಆಧಾರಿತ ಬೆಳೆ ರೋಗ ಪತ್ತೆ ಮತ್ತು ನೀರಾವರಿ ಎಚ್ಚರಿಕೆಗಳಿಗಾಗಿ ಮೊಬೈಲ್ ಅಧಿಸೂಚನೆಗಳನ್ನು ಏಕೀಕರಿಸಲು ಯೋಜಿಸುತ್ತಿದ್ದೇವೆ, "
+"ಪೂರ್ಣ ಪ್ರಮಾಣದ ನಿಖರ ಕೃಷಿ ವೇದಿಕೆಯನ್ನು ಒದಗಿಸುವ ಉದ್ದೇಶದಿಂದ."

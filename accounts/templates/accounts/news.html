@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Agricultural News{% endblock %}
+{% block content %}
+
+<div class="container my-5">
+  <h2 class="fw-bold text-success mb-4">📰 Latest Agricultural News</h2>
+
+  {% for news in news_items %}
+  <div class="card shadow-sm border-0 mb-3 p-3 rounded-4">
+    <h5 class="fw-semibold">{{ news.title }}</h5>
+    <p class="text-muted small">{{ news.published }}</p>
+    <p>{{ news.summary|safe }}</p>
+    <a href="{{ news.link }}" target="_blank" class="btn btn-outline-success btn-sm">Read more →</a>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

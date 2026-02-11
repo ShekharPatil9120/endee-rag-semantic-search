@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+Smart Farm Assistant
+{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center">
+  <div class="chat-container mt-4">
+
+    <!-- Header -->
+    <div class="chat-header text-center">
+      <h4>🌾 Smart Farm Assistant</h4>
+      <small>{% trans "Describe crop symptoms to get disease advice" %}</small>
+    </div>
+
+    <!-- Messages -->
+    <div class="chat-messages" id="chatBox">
+      <div class="bot-message">
+        Hello! Please describe crop symptoms.
+      </div>
+    </div>
+
+    <!-- Input -->
+    <div class="chat-input">
+      <input id="userInput" type="text" placeholder="Example: rice leaves have brown spots">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<style>
+.chat-container {
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+}
+
+.chat-header {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  padding: 15px;
+  border-radius: 10px 10px 0 0;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background: #f5f5f5;
+}
+
+.user-message {
+  background: #d4edda;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  text-align: right;
+  white-space: pre-line;
+}
+
+.bot-message {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  white-space: pre-line;
+}
+
+.chat-input {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+.chat-input button {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 0 20px;
+}
+</style>
+
+
+<script>
+function addMessage(text, type) {
+  const chatBox = document.getElementById("chatBox");
+  const msg = document.createElement("div");
+  msg.className = type + "-message";
+  msg.innerText = text;
+  chatBox.appendChild(msg);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function sendMessage() {
+  const input = document.getElementById("userInput");
+  const message = input.value.trim();
+  if (!message) return;
+
+  addMessage(message, "user");
+  input.value = "";
+
+  fetch("/chat/ragbot/?q=" + encodeURIComponent(message))
+    .then(res => res.json())
+    .then(data => {
+      let reply = data.reply || "No response";
+      if (data.confidence !== undefined) {
+        reply += "\n\nConfidence: " + data.confidence;
+      }
+      addMessage(reply, "bot");
+    })
+    .catch(() => {
+      addMessage("Server error. Make sure Django and Endee are running.", "bot");
+    });
+}
+
+// Enter key support
+document.addEventListener("DOMContentLoaded", function(){
+  document.getElementById("userInput").addEventListener("keypress", function(e){
+    if (e.key === "Enter") {
+      sendMessage();
+    }
+  });
+});
+</script>
+{% endblock %}

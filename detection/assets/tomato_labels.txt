@@ -1,0 +1,10 @@
+Tomato Bacterial Spot
+Tomato Early Blight
+Tomato Late Blight
+Tomato Leaf Mold
+Tomato Septoria Leaf Spot
+Tomato Spider Mites spotted
+Tomato Target Spot
+Tomato Mosaic Virus
+Tomato Yellow Leaf Curl Virus
+Tomato Healthy

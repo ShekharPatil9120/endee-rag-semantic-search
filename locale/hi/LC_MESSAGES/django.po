@@ -1,0 +1,236 @@
+# Hindi Translations for Smart Farming Project
+# Copyright (C) 2025
+# This file is distributed under the same license as the Smart Farming package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Smart Farming 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-01 18:38+0530\n"
+"PO-Revision-Date: 2025-11-01 19:00+0530\n"
+"Last-Translator: Your Name <EMAIL@ADDRESS>\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\accounts\templates\accounts\dashboard.html:3
+#: .\accounts\templates\accounts\dashboard.html:16
+#: .\accounts\templates\accounts\home.html:16
+msgid "Dashboard"
+msgstr "डैशबोर्ड"
+
+#: .\accounts\templates\accounts\dashboard.html:9
+#: .\accounts\templates\accounts\home.html:9
+msgid "Smart Farming"
+msgstr "स्मार्ट फार्मिंग"
+
+#: .\accounts\templates\accounts\dashboard.html:15
+#: .\accounts\templates\accounts\home.html:3
+#: .\accounts\templates\accounts\home.html:15
+msgid "Home"
+msgstr "होम"
+
+#: .\accounts\templates\accounts\dashboard.html:17
+#: .\accounts\templates\accounts\home.html:17
+msgid "Profile"
+msgstr "प्रोफ़ाइल"
+
+#: .\accounts\templates\accounts\dashboard.html:18
+#: .\accounts\templates\accounts\home.html:18
+msgid "Logout"
+msgstr "लॉगआउट"
+
+#: .\accounts\templates\accounts\dashboard.html:23
+msgid "Language"
+msgstr "भाषा"
+
+#: .\accounts\templates\accounts\dashboard.html:38
+msgid "Smart Farming Dashboard"
+msgstr "स्मार्ट फार्मिंग डैशबोर्ड"
+
+#: .\accounts\templates\accounts\dashboard.html:39
+#, python-format
+msgid "Welcome, <strong>%(user.username)s</strong> 👋"
+msgstr "स्वागत है, <strong>%(user.username)s</strong> 👋"
+
+#: .\accounts\templates\accounts\dashboard.html:40
+msgid "Manage and monitor your farm efficiently with real-time insights."
+msgstr "रीयल-टाइम जानकारी के साथ अपने खेत का कुशलतापूर्वक प्रबंधन और निगरानी करें।"
+
+#: .\accounts\templates\accounts\dashboard.html:47
+msgid "Crops"
+msgstr "फसलें"
+
+#: .\accounts\templates\accounts\dashboard.html:48
+msgid "Active"
+msgstr "सक्रिय"
+
+#: .\accounts\templates\accounts\dashboard.html:53
+msgid "Moisture"
+msgstr "नमी"
+
+#: .\accounts\templates\accounts\dashboard.html:54
+msgid "Avg"
+msgstr "औसत"
+
+#: .\accounts\templates\accounts\dashboard.html:59
+msgid "Motors"
+msgstr "मोटर"
+
+#: .\accounts\templates\accounts\dashboard.html:60
+msgid "Online"
+msgstr "ऑनलाइन"
+
+#: .\accounts\templates\accounts\dashboard.html:65
+msgid "Cameras"
+msgstr "कैमरे"
+
+#: .\accounts\templates\accounts\dashboard.html:66
+msgid "Connected"
+msgstr "कनेक्टेड"
+
+#: .\accounts\templates\accounts\dashboard.html:77
+msgid "Crop Disease Detection"
+msgstr "फसल रोग पहचान"
+
+#: .\accounts\templates\accounts\dashboard.html:78
+msgid "Analyze leaf images to detect plant diseases."
+msgstr "पत्तियों की छवियों का विश्लेषण करके पौधों की बीमारियों का पता लगाएँ।"
+
+#: .\accounts\templates\accounts\dashboard.html:86
+msgid "Crop Recommendation"
+msgstr "फसल सिफारिश"
+
+#: .\accounts\templates\accounts\dashboard.html:87
+msgid "Get the best crop suggestions for your soil and weather."
+msgstr "अपनी मिट्टी और मौसम के लिए सर्वोत्तम फसल सुझाव प्राप्त करें।"
+
+#: .\accounts\templates\accounts\dashboard.html:95
+msgid "Motor Control"
+msgstr "मोटर नियंत्रण"
+
+#: .\accounts\templates\accounts\dashboard.html:96
+msgid "Manually or automatically control water flow."
+msgstr "पानी के प्रवाह को मैन्युअल या स्वचालित रूप से नियंत्रित करें।"
+
+#: .\accounts\templates\accounts\dashboard.html:104
+msgid "Camera Monitoring"
+msgstr "कैमरा मॉनिटरिंग"
+
+#: .\accounts\templates\accounts\dashboard.html:105
+msgid "View and manage real-time camera images."
+msgstr "रीयल-टाइम कैमरा छवियाँ देखें और प्रबंधित करें।"
+
+#: .\accounts\templates\accounts\home.html:47
+msgid "Welcome"
+msgstr "स्वागत है"
+
+#: .\accounts\templates\accounts\home.html:48
+msgid "Here’s your real-time farm environment overview"
+msgstr "यह रहा आपका रीयल-टाइम खेत पर्यावरण अवलोकन"
+
+#: .\accounts\templates\accounts\home.html:56
+msgid "Temperature"
+msgstr "तापमान"
+
+#: .\accounts\templates\accounts\home.html:66
+msgid "Humidity"
+msgstr "आर्द्रता"
+
+#: .\accounts\templates\accounts\home.html:75
+msgid "Soil Moisture"
+msgstr "मृदा नमी"
+
+#: .\accounts\templates\accounts\home.html:84
+msgid "Air Quality"
+msgstr "वायु गुणवत्ता"
+
+#: .\accounts\templates\accounts\home.html:93
+msgid "Data updates automatically every 5 seconds (connected to live sensors)."
+msgstr "डेटा हर 5 सेकंड में स्वचालित रूप से अपडेट होता है (लाइव सेंसर से जुड़ा हुआ)।"
+
+#: .\accounts\templates\accounts\home.html:101
+msgid "Smart Farming Solution Overview"
+msgstr "स्मार्ट फार्मिंग समाधान अवलोकन"
+
+#: .\accounts\templates\accounts\home.html:106
+msgid "About the Project"
+msgstr "परियोजना के बारे में"
+
+#: .\accounts\templates\accounts\home.html:108
+msgid ""
+"Our Smart Farming system integrates IoT and AI to monitor soil moisture, "
+"temperature, humidity, and air quality in real time. The system automates "
+"irrigation control and crop recommendation to ensure optimal growth and "
+"efficient water usage."
+msgstr ""
+"हमारा स्मार्ट फार्मिंग सिस्टम वास्तविक समय में मृदा नमी, तापमान, आर्द्रता और वायु गुणवत्ता की निगरानी के लिए IoT और AI को एकीकृत करता है। "
+"यह प्रणाली सिंचाई नियंत्रण और फसल सिफारिश को स्वचालित करती है ताकि इष्टतम वृद्धि और कुशल जल उपयोग सुनिश्चित किया जा सके।"
+
+#: .\accounts\templates\accounts\home.html:113
+msgid "Architecture Overview"
+msgstr "वास्तुकला अवलोकन"
+
+#: .\accounts\templates\accounts\home.html:115
+msgid ""
+"Data is collected from sensors connected to NodeMCU and transmitted to the "
+"Django Cloud Server via APIs. The Django app processes and displays this "
+"data in real time, while AI models recommend the best crop based on "
+"environmental parameters."
+msgstr ""
+"डेटा NodeMCU से जुड़े सेंसरों से एकत्र किया जाता है और API के माध्यम से Django क्लाउड सर्वर पर भेजा जाता है। "
+"Django ऐप इस डेटा को वास्तविक समय में संसाधित और प्रदर्शित करता है, जबकि AI मॉडल पर्यावरणीय मापदंडों के आधार पर सर्वश्रेष्ठ फसल की सिफारिश करता है।"
+
+#: .\accounts\templates\accounts\home.html:120
+msgid "Key Features"
+msgstr "मुख्य विशेषताएँ"
+
+#: .\accounts\templates\accounts\home.html:122
+msgid "Real-time monitoring of temperature, humidity, and soil moisture"
+msgstr "तापमान, आर्द्रता और मृदा नमी की रीयल-टाइम निगरानी"
+
+#: .\accounts\templates\accounts\home.html:123
+msgid "AI-based crop recommendation"
+msgstr "AI आधारित फसल सिफारिश"
+
+#: .\accounts\templates\accounts\home.html:124
+msgid "Automated irrigation based on soil condition"
+msgstr "मिट्टी की स्थिति के आधार पर स्वचालित सिंचाई"
+
+#: .\accounts\templates\accounts\home.html:125
+msgid "Data visualization and analytics dashboard"
+msgstr "डेटा विज़ुअलाइज़ेशन और विश्लेषण डैशबोर्ड"
+
+#: .\accounts\templates\accounts\home.html:126
+msgid "Cloud-based data storage and control"
+msgstr "क्लाउड-आधारित डेटा संग्रहण और नियंत्रण"
+
+#: .\accounts\templates\accounts\home.html:131
+msgid "AI & Prediction System"
+msgstr "AI और पूर्वानुमान प्रणाली"
+
+#: .\accounts\templates\accounts\home.html:133
+msgid ""
+"Our integrated AI engine analyzes soil and weather parameters to predict the "
+"best crop for current conditions. It also provides nutrient balance and "
+"irrigation guidance, helping farmers make data-driven decisions."
+msgstr ""
+"हमारा एकीकृत AI इंजन मिट्टी और मौसम के मापदंडों का विश्लेषण करता है ताकि मौजूदा परिस्थितियों के लिए सर्वोत्तम फसल का अनुमान लगाया जा सके। "
+"यह पोषक तत्व संतुलन और सिंचाई मार्गदर्शन भी प्रदान करता है, जिससे किसानों को डेटा-आधारित निर्णय लेने में सहायता मिलती है।"
+
+#: .\accounts\templates\accounts\home.html:138
+msgid "Future Scope"
+msgstr "भविष्य की संभावनाएँ"
+
+#: .\accounts\templates\accounts\home.html:140
+msgid ""
+"We plan to integrate image-based crop disease detection using CNN models and "
+"deploy mobile notifications for irrigation alerts, aiming to deliver a "
+"complete precision agriculture platform."
+msgstr ""
+"हम CNN मॉडलों का उपयोग करके छवि-आधारित फसल रोग पहचान को एकीकृत करने और सिंचाई अलर्ट के लिए मोबाइल सूचनाएँ तैनात करने की योजना बना रहे हैं, "
+"ताकि एक पूर्ण सटीक कृषि प्लेटफ़ॉर्म प्रदान किया जा सके।"

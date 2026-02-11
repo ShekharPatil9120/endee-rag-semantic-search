@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}Invalid Image{% endblock %}
+
+{% block content %}
+
+<style>
+    .box { 
+        background: white; padding: 30px; border-radius: 10px; 
+        width: 400px; margin: auto; text-align: center; 
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    .error { font-size: 20px; color: red; margin-bottom: 20px; }
+    .back-btn { 
+        display: inline-block; padding: 10px 20px;
+        background: #4CAF50; color: white; border-radius: 5px; 
+        text-decoration: none;
+    }
+</style>
+
+<div class="box mt-5">
+    <h2>⚠️ Invalid Image</h2>
+    <p class="error">{{ error }}</p>
+
+    {% if confidence %}
+        <p>Green Ratio: {{ confidence }}%</p>
+    {% endif %}
+
+    <a href="{% url 'upload_image' %}" class="back-btn">Try Again</a>
+</div>
+
+{% endblock %}

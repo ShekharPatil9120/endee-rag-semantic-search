@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual env
+venv/
+venv_dialogflow/
+env/
+
+# Django
+db.sqlite3
+media/
+staticfiles_build/
+
+# Environment / secrets
+*.json
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Build
+build/
+dist/

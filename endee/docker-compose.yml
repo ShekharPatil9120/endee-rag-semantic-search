@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  endee-oss:
+    container_name: endee-oss
+
+    build:
+      context: .
+      dockerfile: infra/Dockerfile
+
+    image: endee-oss:latest
+
+    ports:
+      - "8080:8080"
+
+    ulimits:
+      nofile: 100000
+
+    environment:
+      NDD_NUM_THREADS: 0
+      NDD_AUTH_TOKEN: ""
+
+    volumes:
+      - endee-data:/data
+
+    restart: unless-stopped
+
+
+volumes:
+  endee-data:

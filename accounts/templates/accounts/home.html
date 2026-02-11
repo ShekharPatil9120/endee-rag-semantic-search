@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Home" %}{% endblock %}
+
+{% block content %}
+
+<!-- ====== Real-Time Data Section ====== -->
+<div class="container mt-5">
+  <div class="text-center mb-4">
+    <h2 class="fw-bold text-success">{% trans "Welcome" %}, {{ user.username }} 👋</h2>
+    <p class="text-muted">{% trans "Here’s your real-time farm environment overview" %}</p>
+  </div>
+
+  <div class="row justify-content-center g-4">
+    <!-- Temperature -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card shadow-sm border-0 rounded-4 text-center p-3 bg-light h-100">
+        <div class="fs-1 text-danger mb-2">🌡️</div>
+        <h5 class="fw-bold text-secondary">{% trans "Temperature" %}</h5>
+        <p id="temp" class="display-6 fw-bold text-dark mb-0">
+          {{ sensor_data.temperature|default:0 }}°C
+        </p>
+      </div>
+    </div>
+
+    <!-- Humidity -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card shadow-sm border-0 rounded-4 text-center p-3 bg-light h-100">
+        <div class="fs-1 text-primary mb-2">💧</div>
+        <h5 class="fw-bold text-secondary">{% trans "Humidity" %}</h5>
+        <p id="humid" class="display-6 fw-bold text-dark mb-0">
+          {{ sensor_data.humidity|default:0 }}%
+        </p>
+      </div>
+    </div>
+
+    <!-- Soil Moisture -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card shadow-sm border-0 rounded-4 text-center p-3 bg-light h-100">
+        <div class="fs-1 text-success mb-2">🌱</div>
+        <h5 class="fw-bold text-secondary">{% trans "Soil Moisture" %}</h5>
+        <p id="moist" class="display-6 fw-bold text-dark mb-0">
+          {{ sensor_data.moisture|default:0 }}%
+        </p>
+      </div>
+    </div>
+
+    <!-- Air Quality -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card shadow-sm border-0 rounded-4 text-center p-3 bg-light h-100">
+        <div class="fs-1 text-warning mb-2">🌫️</div>
+        <h5 class="fw-bold text-secondary">{% trans "Air Quality" %}</h5>
+        <p id="air" class="display-6 fw-bold text-dark mb-0">
+          {{ sensor_data.air_quality|default:0 }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-5">
+    <p class="text-muted small">
+      🔄 {% trans "Data updates automatically every 5 seconds (connected to live sensors)." %}
+    </p>
+  </div>
+</div>
+
+<!-- ====== Scrolling Project Description ====== -->
+<section class="mt-5 py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-4 text-success">
+      🌾 {% trans "Smart Farming Solution Overview" %}
+    </h2>
+
+    <div class="scrolling-section">
+
+      <div class="scroll-item fade-in">
+        <h4 class="fw-bold text-dark">🔍 {% trans "About the Project" %}</h4>
+        <p class="text-muted">
+          {% trans "Our Smart Farming system integrates IoT and AI to monitor soil moisture, temperature, humidity, and air quality in real time. The system automates irrigation control and crop recommendation to ensure optimal growth and efficient water usage." %}
+        </p>
+      </div>
+
+      <div class="scroll-item fade-in">
+        <h4 class="fw-bold text-dark">⚙️ {% trans "Architecture Overview" %}</h4>
+        <p class="text-muted">
+          {% trans "Data is collected from sensors connected to NodeMCU and transmitted to the Django Cloud Server via APIs. The Django app processes and displays this data in real time, while AI models recommend the best crop based on environmental parameters." %}
+        </p>
+      </div>
+
+      <div class="scroll-item fade-in">
+        <h4 class="fw-bold text-dark">💡 {% trans "Key Features" %}</h4>
+        <ul class="text-muted">
+          <li>🌡️ {% trans "Real-time monitoring of temperature, humidity, and soil moisture" %}</li>
+          <li>🤖 {% trans "AI-based crop recommendation" %}</li>
+          <li>🚿 {% trans "Automated irrigation based on soil condition" %}</li>
+          <li>📈 {% trans "Data visualization and analytics dashboard" %}</li>
+          <li>☁️ {% trans "Cloud-based data storage and control" %}</li>
+        </ul>
+      </div>
+
+      <div class="scroll-item fade-in">
+        <h4 class="fw-bold text-dark">🧠 {% trans "AI & Prediction System" %}</h4>
+        <p class="text-muted">
+          {% trans "Our integrated AI engine analyzes soil and weather parameters to predict the best crop for current conditions. It also provides nutrient balance and irrigation guidance, helping farmers make data-driven decisions." %}
+        </p>
+      </div>
+
+      <div class="scroll-item fade-in">
+        <h4 class="fw-bold text-dark">🚀 {% trans "Future Scope" %}</h4>
+        <p class="text-muted">
+          {% trans "We plan to integrate image-based crop disease detection using CNN models and deploy mobile notifications for irrigation alerts, aiming to deliver a complete precision agriculture platform." %}
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====== Styles ====== -->
+<style>
+  .card:hover {
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .scroll-item {
+    margin-bottom: 40px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+  }
+
+  .scroll-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+<!-- ====== Scripts ====== -->
+<script>
+  function updateSensorData() {
+    fetch(window.location.pathname + '?ajax=1')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('temp').innerText = data.temperature + "°C";
+        document.getElementById('humid').innerText = data.humidity + "%";
+        document.getElementById('moist').innerText = data.moisture + "%";
+        document.getElementById('air').innerText = data.air_quality;
+      })
+      .catch(err => console.error("Error updating data:", err));
+  }
+
+  setInterval(updateSensorData, 5000);
+
+  const fadeElements = document.querySelectorAll('.scroll-item');
+  window.addEventListener('scroll', () => {
+    fadeElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        el.classList.add('visible');
+      }
+    });
+  });
+</script>
+
+{% endblock %}

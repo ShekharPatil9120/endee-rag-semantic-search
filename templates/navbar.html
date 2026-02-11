@@ -1,0 +1,73 @@
+{% load i18n %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm sticky-top">
+  <div class="container-fluid">
+
+    <!-- 🌾 Left Menu Dropdown -->
+    <div class="dropdown me-3">
+      <button class="btn btn-success dropdown-toggle" type="button" id="menuDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        ☰ Menu
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="menuDropdown">
+        <li><a class="dropdown-item" href="{% url 'community' %}">👨‍🌾 {% trans "Community" %}</a></li>
+        <li><a class="dropdown-item" href="{% url 'contact_admin' %}">📞 {% trans "Contact Admin" %}</a></li>
+        <li><a class="dropdown-item" href="{% url 'contact_specialist' %}">🧑‍🔬 {% trans "Contact Specialist" %}</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="{% url 'news' %}">📰 {% trans "Latest News" %}</a></li>
+      </ul>
+    </div>
+
+    <!-- 🌾 Brand -->
+    <a class="navbar-brand fw-bold" href="{% url 'home' %}">🌾 {% trans "Smart Farming" %}</a>
+
+    <!-- Mobile Toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Right-side Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}">🏠 {% trans "Home" %}</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'dashboard' %}">📊 {% trans "Dashboard" %}</a>
+        </li>
+
+        <!-- 🤖 AI Chatbot -->
+        <li class="nav-item">
+          <a class="nav-link fw-bold text-warning" href="{% url 'chat_page' %}">
+            🤖 {% trans "AI Assistant" %}
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'profile' %}">👤 {% trans "Profile" %}</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-warning" href="{% url 'logout' %}">🚪 {% trans "Logout" %}</a>
+        </li>
+
+        <!-- 🌐 Language Selector -->
+        <li class="nav-item">
+          <form action="{% url 'set_language' %}" method="post" class="d-flex ms-3">
+            {% csrf_token %}
+            <select name="language" class="form-select form-select-sm" onchange="this.form.submit()">
+              {% get_current_language as LANGUAGE_CODE %}
+              {% get_available_languages as LANGUAGES %}
+              {% for lang in LANGUAGES %}
+                <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %}selected{% endif %}>
+                  {{ lang.1 }}
+                </option>
+              {% endfor %}
+            </select>
+          </form>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

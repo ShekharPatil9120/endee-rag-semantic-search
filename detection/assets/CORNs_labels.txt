@@ -1,0 +1,4 @@
+Corn_(maize)Common_rust
+Corn_(maize)_Cercospora_leaf_spot Gray_leaf_spot
+Corn_(maize)_Northern_Leaf_Blight
+Corn_(maize)_healthy

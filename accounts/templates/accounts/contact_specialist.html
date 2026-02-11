@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Contact Specialist" %}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+  <h2 class="text-center fw-bold text-success mb-4">🧑‍🔬 {% trans "Consult a Specialist" %}</h2>
+  <p class="text-center text-muted mb-5">
+    {% trans "Get professional advice on soil, irrigation, or crop diseases." %}
+  </p>
+
+  <div class="row justify-content-center g-4">
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 rounded-4 p-3 h-100">
+        <h5 class="fw-bold text-success">🌾 {% trans "Crop Specialist" %}</h5>
+        <p class="text-muted mb-2">
+          {% trans "Expert in crop recommendation and seasonal farming techniques." %}
+        </p>
+        <p class="small text-muted mb-2">📧 cropspecialist@farmingsystem.com</p>
+        <p class="small text-muted">📞 +91 98765 43210</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 rounded-4 p-3 h-100">
+        <h5 class="fw-bold text-success">💧 {% trans "Irrigation Expert" %}</h5>
+        <p class="text-muted mb-2">
+          {% trans "Helps with water management, pump setup, and automation." %}
+        </p>
+        <p class="small text-muted mb-2">📧 irrigation@farmingsystem.com</p>
+        <p class="small text-muted">📞 +91 98765 12345</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 rounded-4 p-3 h-100">
+        <h5 class="fw-bold text-success">🧪 {% trans "Soil Scientist" %}</h5>
+        <p class="text-muted mb-2">
+          {% trans "Provides insights on nutrient balance and soil testing." %}
+        </p>
+        <p class="small text-muted mb-2">📧 soil@farmingsystem.com</p>
+        <p class="small text-muted">📞 +91 91234 56789</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

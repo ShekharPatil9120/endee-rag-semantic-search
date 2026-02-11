@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Irrigation Motor Control{% endblock %}
+
+{% block content %}
+<!-- ✅ Navbar -->
+<!-- ✅ Main Content -->
+<div class="container text-center" style="padding-top:120px;">
+  <div class="card shadow-lg p-5 bg-dark bg-opacity-75 text-white rounded-4">
+    <h1 class="mb-4 fw-bold">🌾 Smart Irrigation Motor Control</h1>
+
+    <!-- Auto Mode Button -->
+    <div>
+      <button id="autoBtn" class="btn btn-lg px-4 py-2" 
+              style="background-color:#2962ff; color:white; border-radius:10px;"
+              onclick="toggleAuto()">Automate: OFF</button>
+    </div>
+
+    <!-- Manual Control Buttons -->
+    <div class="mt-4">
+      <button id="onBtn" class="btn btn-success btn-lg mx-2 px-4 py-2" onclick="sendCommand(1)">Turn Motor ON</button>
+      <button id="offBtn" class="btn btn-danger btn-lg mx-2 px-4 py-2" onclick="sendCommand(0)">Turn Motor OFF</button>
+    </div>
+
+    <!-- Status Text -->
+    <div class="mt-4">
+      <p id="statusText" class="fs-5 text-info mb-2">Mode: Manual</p>
+      <p id="motorStateText" class="fs-5 text-warning">Motor State: Loading...</p>
+    </div>
+
+    <!-- ✅ Weather Button -->
+    <div class="mt-5">
+      <button class="btn btn-info btn-lg px-4 py-2" 
+              data-bs-toggle="modal" 
+              data-bs-target="#weatherModal">
+        🌤 Check Weather Condition
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Weather Modal -->
+<div class="modal fade" id="weatherModal" tabindex="-1" aria-labelledby="weatherModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-light">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="weatherModalLabel">🌦 Current Weather</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-dark" id="weatherContent">
+        <p class="text-center">Fetching live weather data...</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Script Section -->
+<script>
+  // --- Motor Control Section ---
+  const baseUrl = "https://shekharpatil.pythonanywhere.com/api/update-set/";
+  const readUrl = "https://shekharpatil.pythonanywhere.com/api/read/";
+
+  let autoMode = false;
+  let lastClickedState = null;
+
+  function sendCommand(value){
+    if(autoMode) return;
+    lastClickedState = value;
+    updateMotorStateText(value);
+    fetch(baseUrl + '?set=' + value)
+      .then(res => res.json())
+      .then(data => fetchMotorState())
+      .catch(err => console.error(err));
+  }
+
+  function toggleAuto(){
+    autoMode = !autoMode;
+    const autoBtn = document.getElementById("autoBtn");
+    const onBtn = document.getElementById("onBtn");
+    const offBtn = document.getElementById("offBtn");
+    const status = document.getElementById("statusText");
+
+    if(autoMode){
+      autoBtn.textContent = "Automate: ON";
+      autoBtn.style.backgroundColor = "#00b0ff";
+      onBtn.disabled = true;
+      offBtn.disabled = true;
+      status.textContent = "Mode: Automate (Manual disabled)";
+    } else {
+      autoBtn.textContent = "Automate: OFF";
+      autoBtn.style.backgroundColor = "#2962ff";
+      onBtn.disabled = false;
+      offBtn.disabled = false;
+      status.textContent = "Mode: Manual (Manual enabled)";
+    }
+  }
+
+  function updateMotorStateText(value){
+    const motorText = document.getElementById("motorStateText");
+    motorText.textContent = "Motor State: " + (value == 1 ? "ON" : "OFF");
+  }
+
+  function fetchMotorState(){
+    fetch(readUrl)
+      .then(res => res.json())
+      .then(data => {
+        if(data.set_state !== undefined){
+          if(lastClickedState === null || lastClickedState != data.set_state){
+            updateMotorStateText(data.set_state);
+          }
+        }
+      })
+      .catch(err => console.error(err));
+  }
+
+  setInterval(fetchMotorState, 5000);
+  fetchMotorState();
+
+
+  // --- Weather Section (7-Day Forecast) ---
+  // 🔑 Using your actual WeatherAPI key
+  const weatherUrl = "https://api.weatherapi.com/v1/forecast.json?key=bfc9cd3b74614beeb59172239250411&q=Belagavi&days=7&aqi=no&alerts=no";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("weatherModal");
+    modal.addEventListener("show.bs.modal", () => {
+      const content = document.getElementById("weatherContent");
+      content.innerHTML = `<p class="text-center">Fetching 7-day forecast...</p>`;
+
+      fetch(weatherUrl)
+        .then(res => res.json())
+        .then(data => {
+          if (data.error) {
+            content.innerHTML = `<p class="text-danger">${data.error.message}</p>`;
+          } else {
+            let html = `
+              <div class="text-center">
+                <h4 class="mt-2">${data.location.name}, ${data.location.region}</h4>
+                <p class="text-secondary mb-2">7-Day Weather Forecast</p>
+              </div>
+              <div class="row">
+            `;
+
+            data.forecast.forecastday.forEach(day => {
+              html += `
+                <div class="col-md-4 mb-3">
+                  <div class="card border-0 shadow-sm">
+                    <div class="card-body text-center">
+                      <h6>${day.date}</h6>
+                      <img src="${day.day.condition.icon}" width="50" alt="icon">
+                      <p class="mb-0">${day.day.condition.text}</p>
+                      <p class="mb-0">🌡 Max: ${day.day.maxtemp_c}°C</p>
+                      <p class="mb-0">❄ Min: ${day.day.mintemp_c}°C</p>
+                      <p class="mb-0">💧 Rain: ${day.day.daily_chance_of_rain}%</p>
+                    </div>
+                  </div>
+                </div>
+              `;
+            });
+
+            html += `</div>`;
+            content.innerHTML = html;
+          }
+        })
+        .catch(err => {
+          content.innerHTML = `<p class="text-danger">Unable to fetch forecast data. Try again later.</p>`;
+        });
+    });
+  });
+</script>
+
+{% endblock %}

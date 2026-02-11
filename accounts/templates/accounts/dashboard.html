@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Dashboard" %}{% endblock %}
+
+{% block content %}
+<!-- ✅ Dashboard Section -->
+<div class="container mt-5">
+  <div class="text-center mb-5">
+    <h1 class="fw-bold text-success">🌾 {% trans "Smart Farming Dashboard" %}</h1>
+    <p class="lead text-muted mb-1">{% blocktrans %}Welcome, <strong>{{ user.username }}</strong> 👋{% endblocktrans %}</p>
+    <p class="text-secondary">{% trans "Manage and monitor your farm efficiently with real-time insights." %}</p>
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="row g-4 text-center mb-5">
+    <div class="col-md-3 col-6">
+      <div class="summary-card bg-light border-0 rounded-4 p-4 shadow-sm">
+        <h4 class="text-success mb-2">🌱 {% trans "Crops" %}</h4>
+        <p class="text-muted mb-0">{% trans "Active" %}: <strong>12</strong></p>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="summary-card bg-light border-0 rounded-4 p-4 shadow-sm">
+        <h4 class="text-warning mb-2">💧 {% trans "Moisture" %}</h4>
+        <p class="text-muted mb-0">{% trans "Avg" %}: <strong>68%</strong></p>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="summary-card bg-light border-0 rounded-4 p-4 shadow-sm">
+        <h4 class="text-info mb-2">⚙️ {% trans "Motors" %}</h4>
+        <p class="text-muted mb-0">{% trans "Online" %}: <strong>2</strong></p>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="summary-card bg-light border-0 rounded-4 p-4 shadow-sm">
+        <h4 class="text-danger mb-2">📸 {% trans "Cameras" %}</h4>
+        <p class="text-muted mb-0">{% trans "Connected" %}: <strong>1</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feature Buttons Grid -->
+  <div class="row justify-content-center g-4">
+    <div class="col-md-3 col-sm-6">
+      <a href="{% url 'detection_home' %}" class="feature-card shadow-lg d-block p-4 text-decoration-none text-dark rounded-4">
+        <div class="icon text-primary display-5 mb-3">🧬</div>
+        <h5 class="fw-bold mb-2">{% trans "Crop Disease Detection" %}</h5>
+        <p class="small text-muted">{% trans "Analyze leaf images to detect plant diseases." %}</p>
+      </a>
+    </div>
+
+    <div class="col-md-3 col-sm-6">
+      <a href="{% url 'crop_api_home' %}" class="feature-card shadow-lg d-block p-4 text-decoration-none text-dark rounded-4">
+        <div class="icon text-success display-5 mb-3">🌱</div>
+        <h5 class="fw-bold mb-2">{% trans "Crop Recommendation" %}</h5>
+        <p class="small text-muted">{% trans "Get the best crop suggestions for your soil and weather." %}</p>
+      </a>
+    </div>
+
+    <div class="col-md-3 col-sm-6">
+      <a href="{% url 'motor' %}" class="feature-card shadow-lg d-block p-4 text-decoration-none text-dark rounded-4">
+        <div class="icon text-warning display-5 mb-3">⚙️</div>
+        <h5 class="fw-bold mb-2">{% trans "Motor Control" %}</h5>
+        <p class="small text-muted">{% trans "Manually or automatically control water flow." %}</p>
+      </a>
+    </div>
+
+    <div class="col-md-3 col-sm-6">
+      <a href="{% url 'show_photos' %}" class="feature-card shadow-lg d-block p-4 text-decoration-none text-dark rounded-4">
+        <div class="icon text-danger display-5 mb-3">📷</div>
+        <h5 class="fw-bold mb-2">{% trans "Camera Monitoring" %}</h5>
+        <p class="small text-muted">{% trans "View and manage real-time camera images." %}</p>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Styling -->
+<style>
+  body { background: #f8fbf8; }
+  .summary-card { transition: all 0.3s ease; }
+  .summary-card:hover {
+    background-color: #e9f7ef;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  }
+  .feature-card {
+    background: #fff;
+    text-align: center;
+    transition: all 0.3s ease;
+    height: 100%;
+  }
+  .feature-card:hover {
+    background: #f3faf4;
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  }
+  .feature-card .icon { font-size: 3rem; }
+  @media (max-width: 768px) {
+    .feature-card { padding: 20px; }
+  }
+</style>
+{% endblock %}

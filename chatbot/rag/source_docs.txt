@@ -1,0 +1,411 @@
+# Smart Farm System Documentation
+
+## Overview
+The Smart Farm System is an integrated platform for modern agriculture that combines IoT sensors, machine learning, and cloud computing to optimize crop production, detect diseases early, and manage irrigation efficiently.
+
+## 1. Crop Recommendation System
+
+### Purpose
+The Crop Recommendation System analyzes real-time environmental data to suggest the most suitable crop for your current farm conditions. This maximizes yield and reduces risk.
+
+### Input Parameters
+The system considers the following environmental factors:
+
+**Environmental Sensors:**
+- **Temperature**: Air temperature in Celsius (typical range: 5-40°C)
+- **Humidity**: Relative humidity percentage (0-100%)
+- **Soil Moisture**: Soil water content percentage (0-100%)
+- **Air Quality**: Air Quality Index (AQI) reading
+
+**Soil Nutrients (Default Values):**
+- **Nitrogen (N)**: 90 mg/kg (default)
+- **Phosphorus (P)**: 42 mg/kg (default)
+- **Potassium (K)**: 43 mg/kg (default)
+
+**Seasonal Factor:**
+- **Month Range**: Selection of planting months (month_start to month_end)
+
+### How It Works
+1. User enters or system automatically captures sensor values
+2. System matches values against crop database using Euclidean distance
+3. Crops ranked by compatibility score
+4. Top recommendation provided with cultivation details and suggestions
+
+### Recommended Crops by Region
+
+**Tropical Region (18-35°C):**
+- Rice (Oryza sativa)
+- Coconut (Cocos nucifera)
+- Banana (Musa acuminata)
+- Sugarcane (Saccharum officinarum)
+- Cassava (Manihot esculenta)
+
+**Temperate Region (10-25°C):**
+- Wheat (Triticum aestivum)
+- Corn/Maize (Zea mays)
+- Barley (Hordeum vulgare)
+- Soybean (Glycine max)
+- Potato (Solanum tuberosum)
+
+**Cool Region (5-15°C):**
+- Apple (Malus domestica)
+- Pear (Pyrus communis)
+- Lettuce (Lactuca sativa)
+- Broccoli (Brassica oleracea)
+- Carrot (Daucus carota)
+
+### Access Points
+- Web UI: Navigate to `/crop_api/` and fill form
+- REST API: POST to `/crop-recommendation/` with JSON body
+- Command line: Run management command
+
+### Output Format
+```json
+{
+    "most_recommended": "Wheat",
+    "possible_cultivation": "Prepare fields in November, sow in December-January",
+    "suggestions": "Use certified seeds. Apply 60kg N, 40kg P, 40kg K per hectare..."
+}
+```
+
+## 2. Disease Detection System
+
+### Overview
+The Disease Detection System automatically scans crop images to identify diseases and pests early, enabling timely intervention.
+
+### Technology Stack
+- **Framework**: TensorFlow Lite
+- **Model Architecture**: Convolutional Neural Network (CNN)
+- **Image Input**: 224x224 RGB images
+- **Model Size**: Optimized for mobile/edge devices
+
+### Supported Crops & Diseases
+
+**Apple Trees:**
+- Apple Scab
+- Apple Black Rot
+- Cedar Apple Rust
+- Apple Healthy Leaf
+
+**Corn/Maize:**
+- Corn Gray Leaf Spot
+- Corn Leaf Blight
+- Corn Rust
+- Corn Healthy Leaf
+
+**General Crops (Fallback Model):**
+- Tomato Early Blight
+- Tomato Late Blight
+- Tomato Septoria Leaf Spot
+- Tomato Yellow Leaf Curl
+- And 30+ other plant diseases
+
+### Detection Pipeline
+
+**Step 1: Image Validation**
+- Check if image contains a plant (green pixel ratio > 18%)
+- Reject non-plant images (soil, rocks, buildings, etc.)
+- Resize image to 224x224 pixels
+
+**Step 2: Multi-Model Inference**
+- Try Corn model first (high confidence crop-specific detection)
+- If confidence < 90%, try Apple model
+- If confidence < 95%, use General Plant model (fallback)
+
+**Step 3: Disease Identification**
+- Model outputs disease class and confidence score
+- Match disease name against solution database
+- Retrieve treatment recommendations
+
+**Step 4: Action & Notification**
+- Store detection result in database
+- Update cache for homepage display
+- Send email alert if disease detected (not "Healthy")
+
+### Input Sources
+
+**Option 1: Web Upload**
+- Visit `/detection/upload_image/`
+- Upload JPG/PNG file from computer
+- Results shown immediately
+
+**Option 2: Image URL**
+- Visit `/detection/enter_url/`
+- Provide direct link to crop image
+- System downloads and analyzes
+
+**Option 3: Remote Camera (Automatic)**
+- ESP32-CAM streams images continuously
+- Management command runs periodic detection
+- Automatic alerts sent when disease found
+
+### Solutions Database
+The system includes treatment recommendations for each disease:
+- **Temporary Solutions**: Organic and cultural practices (no chemicals)
+- **Permanent Solutions**: Chemical sprays and long-term management
+
+Solutions are stored in CSV and displayed with detection results.
+
+### How to Trigger Detection
+1. **Manual**: Upload image via web UI
+2. **Automatic**: Run cron job: `python manage.py check_images`
+3. **Scheduled**: Set up Django-Q or Celery for background tasks
+
+## 3. Real-Time Data & Homepage Dashboard
+
+### What is Displayed
+The Smart Farm homepage displays current farm status:
+
+**Sensor Readings:**
+- Current Temperature (°C)
+- Current Humidity (%)
+- Soil Moisture (%)
+- Air Quality Index (AQI)
+
+**System Status:**
+- Latest Crop Recommendation
+- Recent Disease Detection
+- Camera Image (if available)
+- Motor State (Irrigation ON/OFF)
+
+### Data Sources
+
+**Live Sensor API:**
+- Endpoint: `https://shekharpatil202.pythonanywhere.com/get-latest/`
+- Returns: temperature, humidity, moisture, air_quality
+- Update frequency: Every 5 minutes
+
+**Camera Image:**
+- Source: `https://shekharpatil2004.pythonanywhere.com/photos/`
+- ESP32-CAM streaming interface
+- Auto-updated every request
+
+**Motor State:**
+- Proxy endpoint: `/accounts/api/read/`
+- Returns: {set_state: 1} (1=ON, 0=OFF)
+
+**Crop Recommendation:**
+- Stored in database table: `crop_api_recommendation`
+- Fetched on-demand when user accesses homepage
+- Latest by creation timestamp
+
+**Disease Detection:**
+- Cached in Django cache (1-hour expiry)
+- Updated by automatic detection jobs
+- Shows most recent detection result
+
+### AJAX Real-Time Updates
+The homepage uses AJAX polling to refresh data every 30 seconds:
+```javascript
+fetch('/home/?ajax=1')
+  .then(r => r.json())
+  .then(data => updateDisplay(data))
+```
+
+Response includes all sensor data and system status.
+
+## 4. Sensor Integration & IoT Data
+
+### Sensor Types
+Smart Farm supports multiple sensor types:
+
+**Environmental Sensors:**
+- DHT22: Temperature and Humidity
+- MQ135: Air Quality Index
+- Capacitive Soil Moisture Sensor
+
+**Data Transmission:**
+- Protocol: HTTP POST to `/sensor-data/`
+- Format: JSON
+- Frequency: Configurable (typically every 5 minutes)
+
+### Sensor Data Endpoint
+
+**URL**: `/sensor-data/`
+**Method**: POST
+**Content-Type**: application/json
+
+**Request Format:**
+```json
+{
+    "temperature": 28.5,
+    "humidity": 65.2,
+    "moisture": 45.0,
+    "air_quality": 150
+}
+```
+
+**Response:**
+```json
+{
+    "status": "success",
+    "message": "Sensor data received"
+}
+```
+
+### Data Flow
+1. IoT device reads sensors
+2. Sends POST request to `/sensor-data/`
+3. Django backend receives and caches data
+4. Data available for crop recommendations
+5. Email notifications sent on significant changes
+6. Data displayed on homepage
+
+### Email Notifications
+Smart Farm sends email alerts for:
+- **Sensor Changes**: When readings change significantly (throttled to once every 5 minutes per user)
+- **Disease Detection**: Immediately when disease identified
+- **Crop Recommendations**: When new recommendation generated
+- **System Alerts**: Motor errors, connectivity issues
+
+Emails sent to user account email address with summary of change.
+
+## 5. Irrigation Motor Control
+
+### Motor Control System
+The motor control system manages irrigation pumps via IoT relay.
+
+### Control Methods
+
+**Web UI:**
+- Visit `/motor/`
+- Click "Turn ON" or "Turn OFF"
+- Instant toggle with visual feedback
+
+**REST API:**
+- Set state: POST to `/accounts/api/update-set/` with {state: 1 or 0}
+- Read state: GET `/accounts/api/read/`
+- Returns: {set_state: 1} (1=ON, 0=OFF)
+
+### Integration
+Motor endpoints proxy to external IoT device:
+```
+External URL: https://shekharpatil202.pythonanywhere.com/api/update-set/
+Local proxy: /accounts/api/update-set/
+```
+
+This allows:
+- Local Django authentication
+- Request logging and notifications
+- Email alerts on motor state changes
+- Cross-origin request handling
+
+### Motor State Tracking
+- Current state stored in external device
+- Django reads state on demand
+- State displayed on homepage
+- Notifications sent on changes
+
+## 6. System Architecture & Tech Stack
+
+### Backend
+- **Framework**: Django 5.2.7
+- **Database**: SQLite (development) / PostgreSQL (production)
+- **Cache**: Django in-memory cache / Redis (production)
+- **API**: Django REST Framework
+- **ML Models**: TensorFlow Lite
+
+### Frontend
+- **HTML/CSS**: Bootstrap 5
+- **JavaScript**: Vanilla JS with fetch API
+- **Real-time Updates**: AJAX polling every 30 seconds
+- **Charts**: (Optional) Chart.js for data visualization
+
+### External Services
+- **Live Sensor API**: Third-party IoT platform
+- **Camera Streaming**: ESP32-CAM module
+- **Motor Control**: IoT relay with HTTP interface
+
+### Authentication & Security
+- Django user authentication
+- CSRF protection enabled
+- HTTPS recommended for production
+- API key management for external services
+
+## 7. Management Commands & Automation
+
+### Available Commands
+
+**Run disease detection:**
+```bash
+python manage.py check_images
+```
+Fetches latest image from remote camera and runs detection.
+
+**Django shell access:**
+```bash
+python manage.py shell
+```
+Interactive Python shell with Django context.
+
+**Collect static files (production):**
+```bash
+python manage.py collectstatic
+```
+
+### Cron Job Setup (Optional)
+To run automatic disease detection every 5 minutes:
+
+**Edit crontab:**
+```
+*/5 * * * * cd /path/to/project && python manage.py check_images
+```
+
+Or use Django-crontab:
+```python
+# In settings.py
+CRONJOBS = [
+    ('*/5 * * * *', 'detection.cron.run_auto_detection'),
+]
+```
+
+## 8. Troubleshooting & Common Issues
+
+### Crop Recommendation Not Working
+**Problem:** System returns error or no recommendation
+**Solutions:**
+1. Verify sensor values are valid (not zero or extreme)
+2. Check CSV data file is present and readable
+3. Ensure at least one crop in database matches parameters
+4. Check Django logs for specific errors
+
+### Disease Detection Failing
+**Problem:** Image upload returns error
+**Solutions:**
+1. Verify image is JPG or PNG format
+2. Check image is actual plant (green pixel ratio)
+3. Ensure TensorFlow Lite models are loaded
+4. Check disk space for temp files
+
+### Sensor Data Not Appearing
+**Problem:** Homepage shows zero values
+**Solutions:**
+1. Verify IoT device can reach `/sensor-data/` endpoint
+2. Check sensor readings are valid (not null)
+3. Test endpoint manually with curl: `curl -X POST http://localhost/sensor-data/ -d '{"temperature": 25}'`
+4. Check Django logs for POST errors
+
+### Email Not Sending
+**Problem:** Notifications not received
+**Solutions:**
+1. Verify email configuration in settings.py
+2. Check email provider credentials (Gmail, Outlook, etc.)
+3. Verify user email addresses in database
+4. Check Django email backend (not fail_silently)
+
+### Motor Control Not Responding
+**Problem:** Motor won't turn on/off
+**Solutions:**
+1. Verify external IoT device is reachable
+2. Check network connectivity from server to IoT device
+3. Test endpoint with curl
+4. Check external device logs and configuration
+
+## Getting Help
+
+For detailed setup and configuration, refer to:
+- README.md - Project overview
+- SENSOR_API_GUIDE.md - Sensor integration details
+- IMPLEMENTATION_SUMMARY.md - Full technical documentation
+
+For issues, check Django console logs for error messages and stack traces.
